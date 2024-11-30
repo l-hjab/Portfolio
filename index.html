@@ -1,3 +1,18 @@
+<?php
+session_start();
+include('config.php');
+if(isset($_POST['submit']))
+{
+$name=$_POST['name'];
+$message=$_POST['message'];
+$email=$_POST['email'];
+$query="insert into  admin(username,email,message) values(?,?,?)";
+$stmt = $mysqli->prepare($query);
+$rc=$stmt->bind_param('sss',$name,$email,$message);
+$stmt->execute();
+echo"<script>alert('Message sent succesfully');</script>";
+}
+?>
 <!doctype html>
 <html class="no-js" lang="">
     <head>
@@ -13,7 +28,7 @@
 		<!-- Google Fonts -->
 		<link href="https://fonts.googleapis.com/css?family=Fira+Sans:300i,400,400i,500,600,700,800,900" rel="stylesheet">
 
-		
+		<link rel="stylesheet" href="style.css">
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/slicknav.min.css">
 		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
@@ -26,7 +41,6 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="css/responsive.css">
-		
     </head>
     <body>
 	
@@ -51,7 +65,7 @@
 					<div class="row">
 						<div class="col-md-3 col-sm-2 col-xs-2">
 							<div class="logo">
-								<a href="index.html"><img src="img/Daphine.png" alt="logo.png" height="40" width="100"></a>
+								<a href="index.php"><img src="img/Daphine.png" alt="logo.png" height="30" width="120"></a>
 							</div>
 						</div>
 						<div class="col-md-9 col-sm-10">
@@ -69,11 +83,11 @@
 												<li><a href="portfolio-single.html"> My portfolio</a></li>
 											</ul>
 										</li>
-										<li><a href="#blog">BLOG</a> 
+										<!--<li><a href="#blog">BLOG</a> 
 											<ul class="dropdown">
-												<li><a href="blog-single.html">blog-single</a></li>
+												<li><a href="blog-single.html">blog</a></li>
 											</ul>
-										</li>
+										</li>-->
 										<li><a href="#contact">Contact</a></li>
 									</ul>
 								</div> 
@@ -89,16 +103,15 @@
 		
 		<!-- Slider Area -->
 		<section id="slider">
-				<div class="single-slider" style="background-image:url('bg1.png'); height: 100VH;">
+				<div class="single-slider" style="background:linear-gradient(-154deg,#111827,#111827); height: 100VH;">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-7 col-sm-12 col-xs-12">
 								<div class="text">
-									<h1>Hello,my name is Daphine Nekesa </h1>
-									<p>I’m a passionate and enthustiatic Data Engineer and Data Analyst ,a part time Web Developer  ,Wordpress and UX/UI Design.
-								     Let's have a chat
-									 </p>
+									<h1>Hello,i'm  Daphine <br>Nekesa a Web Developer and Graphic Designer  </h1>
 									
+									<p>This space is a reflection of my journey, showcasing the projects, skills, and dedication to IT World</p>
+									<p>i'm based in Nairobi Kenya</p>
 									<div class="button">
 										<a href="#latest-works" class="btn primary "><i class="fa fa-briefcase"></i>view work</a>
 										<a href="#contact" class="btn"><i class="fa fa-phone"></i>Contact me</a>
@@ -107,7 +120,7 @@
 							</div>
 							<div class="col-md-4 col-sm-6 col-xs-12">
 								<div class="image">
-									<img src="img/Portfolioimage.jpg"  style="position: relative;top: 100px;" height="400" width="350" alt="#">
+									<img src="img/Portfolioimage.jpg"  style="position: relative;top: 50px;" height="400" width="350" alt="#">
 									<a href="#" class="video "></i></a>
 								</div>
 							</div>
@@ -138,7 +151,7 @@
 									</p>
 								
 								<div class="cv">
-									<a href="cv/Daphine'sCV.pdf" download class="btn">Download CV</a>
+								<a href="cv/Daphine'sCV.pdf" download class="btn">Download CV</a>
 								</div>
 								<div class="social">
 									<ul>
@@ -326,58 +339,52 @@
 					<div class="col-md-10 col-sm-8 col-xs-12">
 						<div class="story-content">
 							<div class="single-story">
-								<span class="year wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay="0.4s">2021</span>
+								<span class="year wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay="0.4s">2022</span>
 								<div class="inner-content wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s">
-									<h3>Website Development</h3>
-									<p>frontend</p>
-									<p class="p2">I joined Web development field in my 2nd Year. 
-										 HTML and CSS became my first allies, allowing me to create and structure the visual elements of the web and creating a simple web page. 
-										 With the desire to bring life to my web creations,I learned JavaScript, and started using it in my projects. 
-										 It empowered me to add interactivity, animations, 
+									<h3>Website Development and WordPress</h3>
+									<p>HTML,CSS and React js</p>
+									<p class="p2">Created  my first website  using Html,Css and Javascript  which was an e-commerce website and also My portfolio,school project .Later on,
+										I Learnt React Js  and started using it  beacuse it provides good interactivity, animations, 
 										 and user-friendly features that transformed my web pages from static to dynamic.
 										</p><br>
-										<p>Backend</p>
-										<p>To complete my skill set, I ventured into the world of back-end development. Learning languages such as Node.js, Python, 
-											and SQL allowed me to build the server-side logic needed for data-driven applications, databases, and APIs.</p>
+										<p><b>WordPress</b></p>
+										<p>I developed an interest in Wordpress of which i used to design UI interfaces and create simple websites.
+											 If offers best user experince and smple to use.</p>
 
 								</div>
 							</div>
 							<div class="single-story">
-								<span class="year wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay="0.6s">2022</span>
+								<span class="year wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay="0.6s">2023</span>
 								<div class="inner-content wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.6s">
-									<h3>Projects</h3>
+									<h3>Graphic Design</h3>
 									<p></p>
 									<p class="p2">
-										My first Project on web Development was to create a front-end website,it was somehow difficult as a beginner 
-										but i managed to create an e-commerce website.Since then i have engaged in more projects which has really helped me to 
-										sharpen my skills in Fullstack Web development.
-										Currently,I have 3 ongoing projects on Mobile application development and Cloud Computing.
+										I use Canva Software to create Posters ,Logos and Business flyers.Graphic Design Skills have also made be to improve my designing skiils
+										over time.
 									</p>
 								</div>
 							</div>
 							<div class="single-story">
-								<span class="year wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay="0.8s">2022</span>
+								<span class="year wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay="0.8s">2024</span>
 								<div class="inner-content wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.8s">
-									<h3>Team Work and Challenges</h3>
-									<p>Team Work</p>
+									<h3>Data Engineering and Visualization</h3>
+									<p>Digital Business Intern or ICT</p>
 									<p class="p2">
-										I quickly learned that web development thrives on collaboration. Joining open-source projects and collaborating with peers not only expanded my knowledge but also instilled in me the value of teamwork and the beauty of collective creation.
+										After my graduation,i started my internship at Batian Nuts Limited as a DBI intern.DBI digitizes the companie's processing by buliding 
+										dashboards which helps the company to monintor their production.
 										</p><br>
-										<p>Challenges and Growth</p>
-										<p>Web development isn't without its challenges.
-											 I faced countless bugs, compatibility issues, and moments of frustration.
-											  However, each obstacle was an opportunity to learn, grow, and emerge as a more resilient developer.</p>
+										<p>Learning Progress</p>
+										<p>I'm Currently Learning Data visualization and Analysis </p>
+										<p>Blockchain</p>
 								</div>
 							</div>
 							<div class="single-story">
-								<span class="year wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay="1s">2023</span>
+								<span class="year wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay="1s">2024</span>
 								<div class="inner-content wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="1s">
-									<h3>Future</h3>
-									<p>Expectation</p>
-									<p class="p2">As I stand at the precipice of completing my fourth year in IT, 
-										I am excited about the future of web development. The possibilities are limitless, 
-										from crafting progressive web apps to integrating AI and machine learning into digital experiences.
-										 The adventure continues, and I am ready to embrace it with development of more projects and colla with web developers across the world.</p>
+									<h3>Ongoing Projects</h3>
+									
+									<p class="p2">Wordpress webbsite For Sharp Movers</p>
+									<p class="p2">Trading Web Application</p>
 								</div>
 							</div>
 						</div>
@@ -416,7 +423,7 @@
 								<li data-filter=".identity"><i class="fa fa-mobile"></i>App Development</li>
 								<li data-filter=".branding"><i class="fa fa-camera"></i>Graphic Design</li>
 								<li data-filter=".web"><i class="fa fa-wordpress"></i>WordPress</li>
-								<li data-filter=".wordpress"><i class="fa fa-life-ring"></i>Seo Marketing</li>
+								
 							</ul>
 						</div>
 						<!--/ End Project Nav -->
@@ -446,10 +453,10 @@
 						</div>
 						<div class="col-md-4 col-sm-4 col-xs-12 web">
 							<div class="single-work">
-								<img src="img/images3.png"  alt="">
+								<img src="img/poster2.png"  height="400" width="100" alt="">
 								
 								<div class="works-hover">
-									<a href="pf-2colum.html"><h4>WEB DEVELOPMENT</h4></a>
+									<a href="pf-2colum.html"><h4>GRAPHIC DESIGN</h4></a>
 									<div class="link"></div>
 								</div>
 							</div>
@@ -466,17 +473,7 @@
 						</div>
 						<div class="col-md-4 col-sm-4 col-xs-12  branding">
 							<div class="single-work">
-								<img src="img/image4.png" alt="">
-								
-								<div class="works-hover">
-									<a href="pf-2colum.html"><h4>WEB DEVELOPMENT</h4></a>
-									<div class="link"></div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-4 col-xs-12  branding">
-							<div class="single-work">
-								<img src="img/pf6.jpg" alt="">
+								<img src="img/portfolio-8.jpg" alt="">
 								
 								<div class="works-hover">
 									<a href="pf-2colum.html"><h4>UX/UI Designing</h4></a>
@@ -484,22 +481,32 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4 col-sm-4 col-xs-12 web print">
+						<div class="col-md-4 col-sm-4 col-xs-12  branding">
 							<div class="single-work">
-								<img src="img/pf7.jpg" alt="">
+								<img src="img/image4.png"  alt="">
 								
 								<div class="works-hover">
-									<a href="pf-2colum.html"><h4>WORDPRESS</h4></a>
+									<a href="pf-2colum.html"><h4>WEB DEVELOPMENT</h4></a>
 									<div class="link"></div>
 								</div>
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-4 col-xs-12 web print">
 							<div class="single-work">
-								<img src="img/pf8.jpg" alt="">
+								<img src="img/poster3.png" height="300px" width="100" alt="">
 								
 								<div class="works-hover">
-									<a href="pf-2colum.html"><h4>Graphic Design</h4></a>
+									<a href="pf-2colum.html"><h4>GRAPHIC DESIGN</h4></a>
+									<div class="link"></div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-4 col-xs-12 web print">
+							<div class="single-work">
+								<img src="img/image2.png"  alt="">
+								
+								<div class="works-hover">
+									<a href="pf-2colum.html"><h4>>WEB DEVELOPMENT</h4></a>
 									<div class="link"></div>
 								</div>
 							</div>
@@ -510,7 +517,7 @@
 		</section>
 		<!--/ End Works -->
 		
-		<!-- Testimonials -->
+		<!-- Testimonials
 		<section id="testimonials" class="section">
 			<div class="container">
 				<div class="row">
@@ -518,7 +525,7 @@
 						<div class="testi-content">
 							<h2>What People Says</h2>
 							<div class="owl-carousel testimonial-slider">
-								<!--Start single-testimonial -->
+								
 								<div class="single-testimonial">
 									<img src="img/team1.jpg" alt="#">
 									<p><i class="fa fa-quote-left"></i><i>We were fortunate to have Daphine as our backend developer, 
@@ -532,10 +539,10 @@
 										<i class="fa fa-star"></i>
 										<i class="fa fa-star-half"></i>
 									</div>
-									<span class="name">naimur rahman</span>
+									<span class="name">John Spikes</span>
 								</div>
-								<!--End single-testimonial -->
-								<!--Start single-testimonial -->
+								End single-testimonial -->
+								<!--Start single-testimonial 
 								<div class="single-testimonial">
 									<img src="img/team2.jpg" alt="#">
 									<p><i class="fa fa-quote-left"></i><i>Daphine is a true web development wizard!
@@ -552,8 +559,8 @@
 									</div>
 									<span class="name">Mukiri Maore</span>
 								</div>
-								<!--End single-testimonial -->
-								<!--Start single-testimonial -->
+								<End single-testimonial 
+								<Start single-testimonial 
 								<div class="single-testimonial">
 									<img src="img/team3.jpg" alt="#">
 									<p><i class="fa fa-quote-left"></i><i> I had the pleasure of collaborating with Daphine on a user interface 
@@ -567,9 +574,9 @@
 										<i class="fa fa-star"></i>
 										<i class="fa fa-star-half"></i>
 									</div>
-									<span class="name">Mahedi Hasan</span>
+									<span class="name">Silas Mutwiri</span>
 								</div>
-								<!--End single-testimonial -->
+								End single-testimonial 
 								
 							</div>
 						</div>
@@ -577,7 +584,7 @@
 				</div>
 			</div>
 		</section>
-		<!--/ End testimonial -->
+		 End testimonial -->
 		
 		
 		
@@ -598,7 +605,7 @@
 					<div class="col-md-4 col-sm-12 col-xs-12 wow fadeInRight" data-wow-duration="0.8s" data-wow-delay="0.4s">
 						<div class="single-news">
 							<div class="news-head">
-								<img src="img/blog1.jpg" alt="#">
+								<img src="img/Room1.png" alt="#">
 							</div>
 							<div class="news-date">
 								<span>10</span> 
@@ -606,15 +613,14 @@
 								<span>2023</span> 
 							</div>
 							<div class="news-view"> 
-								<span><i class="fa fa-comments"></i>25 comments</span>
-								<span><i class="fa fa-eye"></i>10k views</span>
+								<span><i class="fa fa-comments"></i>5 comments</span>
+								<span><i class="fa fa-eye"></i>100 views</span>
 							</div>
 							<div class="news-body" id="news-body">
-								<h2><a href="#">Student Management System</a></h2>
-								<p>Both front-end  and Backend using Django framework,Student Management System is a web based project where
-									students can be able to login ,access notes ,do assignments and communicate with their lecters.<br>It also contains
-									a module where lecturers can login as admin and monitor student's activities and progress.
-					 </p>
+								<h2><a href="#">Roommate Management System</a></h2>
+								<p>It's a system that help college and universities students to book relevant rooms and roommate of their own choice.The system 
+									Has Behaviour preferences for their desired Roommate<br>It also contains
+									a module where the system matches the students.
 								<a href="#news-body" class="btn">Read More <i class="fa fa-angle-double-right"></i></a>
 							</div>
 						</div>
@@ -622,7 +628,7 @@
 					<div class="col-md-4 col-sm-12 col-xs-12 wow fadeInRight" data-wow-duration="0.8s" data-wow-delay="0.5s">
 						<div class="single-news">
 							<div class="news-head">
-								<img src="img/blog2.jpg" alt="#">
+								<img src="img/Hbot.png" alt="#">
 							</div>
 							<div class="news-date">
 								<span>20</span> 
@@ -631,12 +637,12 @@
 							</div>
 							<div class="news-view"> 
 								<span><i class="fa fa-comments"></i>20 comments</span>
-								<span><i class="fa fa-eye"></i>40k views</span>
+								<span><i class="fa fa-eye"></i>50 views</span>
 							</div>
 							<div class="news-body" id="news-body">
-								<h2><a href="#">Emotion-Based Music player</a></h2>
-								<p>Its a mobile Applicaton that displays music basing on the user's mood such as happiness,anger,excited and sad.<br>This project was done
-									as  a team work( a group of 3 developers).It was developed using flutter language and it development process took one month.</p>
+								<h2><a href="#">Bot For Crime Matters</a></h2>
+								<p>This Bot helps to solve Crime by offering guidance to Police offices,Victims and Paralegals.
+									It provides all the steps on how to handle cases and rles and regulations tha should be followed for a case to be closed.</p>
 								<p>   </p>
 								<a href="#news-body" class="btn">Read More <i class="fa fa-angle-double-right"></i></a>
 							</div>
@@ -645,7 +651,7 @@
 					<div class="col-md-4 col-sm-12 col-xs-12 wow fadeInRight" data-wow-duration="0.8s" data-wow-delay="0.6s">
 						<div class="single-news">
 							<div class="news-head">
-								<img src="img/blog3.jpg" alt="#">
+								<img src="img/crime1.png" alt="#">
 							</div>
 							<div class="news-date">
 								<span>1</span> 
@@ -654,11 +660,12 @@
 							</div>
 							<div class="news-view"> 
 								<span><i class="fa fa-comments"></i>200 comments</span>
-								<span><i class="fa fa-eye"></i>30k views</span>
+								<span><i class="fa fa-eye"></i>10 views</span>
 							</div>
 							<div class="news-body" id="news-body">
-								<h2><a href="#">Smart Hostel Management System</a></h2>
-								<p>My final Year Projects..About to start in few weeks..<br>JUST WAIT for this amazing project  and you will amazed with the final outcome.ore et. Lorem ipsum dolor a sit ameti, consectetur adipisicing elit,</p>
+								<h2><a href="#">Online Case Filing System</a></h2>
+								<p>AI-enabled online case filing system streamlines the filing process which is<br>
+								  integrated with chabot within the system aimed to provide users with immediate assistance, guidance.</p>
 								
 								<a href="#news-body " class="btn">Read More <i class="fa fa-angle-double-right"></i></a>
 							</div>
@@ -669,7 +676,7 @@
 		</section>
 		<!--/ End blog -->
 		
-		<!-- Newslatter -->
+		<!-- Newslatter 
 		<section id="newslatter" class="section">
 			<div class="container">
 				<div class="row">
@@ -691,7 +698,7 @@
 				</div>
 			</div>
 		</section>
-		<!--/ End Newslatter -->
+		End Newslatter -->
 	
 		
 		<section id="contact" class="section">
@@ -726,7 +733,7 @@
 						</div>
 						<div class="col-md-8 col-sm-12 col-xs-12 ">
 							<div class="form-head">
-								<form class="form">
+								<form  method="post" action="" class="form">
 								
 									<div class="row">
 											<div class="form-group">
@@ -743,7 +750,7 @@
 									
 									<div class="form-group">
 										<div class="button">
-											<button type="submit" class="btn primari">Submit</button>
+											<button type="submit" name="submit" class="btn primary">Submit</button>
 										</div>
 									</div>
 								</form>
