@@ -1,6 +1,6 @@
 # 👋 Hi, I'm Daphine
 
-Welcome to my GitHub portfolio! I'm a [your profession or role] with a passion for [mention your key interests, e.g., software development, data science, etc.]. Here, you'll find a collection of my projects, experiments, and contributions to open-source.
+Welcome to my GitHub portfolio! I'm a data analst and software developer with a passion for software development and data science. Here, you'll find a collection of my projects, experiments, and contributions to open-source.
 
 ## 🚀 About Me
 - 🌱 I’m currently learning Software development at plp.
